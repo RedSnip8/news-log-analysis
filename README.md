@@ -5,9 +5,9 @@ Code written by [Frank Cipolone aka RedSnip8.](https://github.com/RedSnip8)
 ## Overview
 This program is set up to function as a reporting tool for a PostgreSQL database. It will return data based on the following report questions:
 
-  __* What are the *3 most popular* news articles (based on article views)?__
-  __* Who are the *3 most popular* authors (based on total indiviual article views)?__
-  __* Which days had *more than 1%* of requests lead to errors?__
+  *__What are the *3 most popular* news articles (based on article views)?__
+  *__Who are the *3 most popular* authors (based on total indiviual article views)?__
+  *__Which days had *more than 1%* of requests lead to errors?__
 
 The program is python based making use of the psycop2 DB-API and is meant to be connected to a premade news databased using PostgreSQL.
 
