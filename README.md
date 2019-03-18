@@ -44,7 +44,9 @@ Views were created for the following:
 articleviewcount
 ```
 CREATE VIEW articleviewcount AS
-    SELECT 
+    SELECT articles.slug, articles.title, view_count.count 
+    FROM articles, (SELECT path, COUNT(path) FROM log group by path) AS view_count 
+    WHERE view_count.path LIKE '%' || articles.slug;
 ```
 
 authorviewcount
