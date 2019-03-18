@@ -42,19 +42,19 @@ In order to satisfy each report question the code does the following:
 Views were created for the following:
 
 articleviewcount
-'''
+```
 CREATE VIEW articleviewcount AS
     SELECT 
-'''
+```
 
 authorviewcount
-'''
+```
 CREATE VIEW authorviewcount AS
    SELECT 
-'''
+```
 
 dailystscodes
-'''
+```
 CREAT VIEW dailystscodes AS
     SELECT
-'''
+```
