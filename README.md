@@ -59,8 +59,11 @@ CREATE VIEW authorviewcount AS
   GROUP BY authors.id;
 ```
 
-dailystscodes
+dailystatuslog
 ```
-CREAT VIEW dailystatuslog AS
-    SELECT time::date AS day, COUNT(*) AS total_inqueries, COUNT(case when status != '200 OK' then 1 end) AS errors, ROUND((count(case when status != '200 OK' then 1 end) * 100.0)::numeric / count(*),2) AS error_percent from log group by time::date;
+CREATE VIEW dailystatuslog AS
+    SELECT time::date AS day, COUNT(*) AS total_inqueries, 
+    COUNT(case when status != '200 OK' then 1 end) AS errors, 
+    ROUND((count(case when status != '200 OK' then 1 end) * 100.0)::numeric 
+    / count(*),2) AS error_percent from log group by time::date;
 ```
