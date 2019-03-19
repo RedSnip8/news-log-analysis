@@ -39,6 +39,7 @@ In order to satisfy each report question the code does the following:
 
 
 ### Created Views for use
+The Python code relies heavily on the following views being created in order to save time on the applicaiton end. __Be sure to create each table in oreder shown.__
 Views were created for the following:
 
 articleviewcount
