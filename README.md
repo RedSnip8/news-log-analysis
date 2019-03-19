@@ -44,15 +44,20 @@ Views were created for the following:
 articleviewcount
 ```
 CREATE VIEW articleviewcount AS
-    SELECT articles.slug, articles.title, view_count.count 
-    FROM articles, (SELECT path, COUNT(path) FROM log group by path) AS view_count 
-    WHERE view_count.path LIKE '%' || articles.slug;
+    SELECT articles.slug, articles.title, articles.author, view_count.count 
+      FROM articles, (SELECT path, COUNT(path) FROM log group by path) AS view_count 
+        WHERE view_count.path LIKE '%' || articles.slug;
 ```
+_contains the article slug, title, and author id combined with a count based on logged request paths count for each path matching a slug_
 
 authorviewcount
 ```
 CREATE VIEW authorviewcount AS
-   SELECT 
+   SELECT authors.id, authors.name, SUM(articleviewcount.count) 
+    FROM authors JOIN articleviewcount 
+      ON authors.id = articleviewcount.author 
+       GROUP BY authors.id;
+
 ```
 
 dailystscodes
