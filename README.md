@@ -35,7 +35,7 @@ In order to satisfy each report question the code does the following:
 
 
 ## How to use
-Open a new terminal shell and be sure to run the applicatio using python3 while in the /news-log-analysis directory to function properly. _If you git cloned this directory outside of the home directory fill in the cd command below with the correct path_
+Open a new terminal shell and be sure to run the application using python3 while in the /news-log-analysis directory to function properly. _If you git cloned this directory outside of the home directory fill in the cd command below with the correct path_
 
 ```
 $ cd news-log-analysis
