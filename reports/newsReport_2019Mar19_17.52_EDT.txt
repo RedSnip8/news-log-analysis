@@ -1,0 +1,21 @@
+Top Articles and View Count
+Article: Candidate is jerk, alleges rival
+  Views: 338647
+Article: Bears love berries, alleges bear
+  Views: 253801
+Article: Bad things gone, say good people
+  Views: 170098
+
+
+Top Authors and View Count
+Author: Ursula La Multa
+ Views: 507594
+Author: Rudolf von Treppenwitz
+ Views: 423457
+Author: Anonymous Contributor
+ Views: 170098
+
+
+Days With Page Request Errors over 1%
+Day: 2016-07-17
+ Error Percentage: 2.28%
