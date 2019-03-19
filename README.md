@@ -44,24 +44,23 @@ Views were created for the following:
 articleviewcount
 ```
 CREATE VIEW articleviewcount AS
-    SELECT articles.slug, articles.title, articles.author, view_count.count 
-      FROM articles, (SELECT path, COUNT(path) FROM log group by path) AS view_count 
-        WHERE view_count.path LIKE '%' || articles.slug;
+  SELECT articles.slug, articles.title, articles.author, view_count.count 
+  FROM articles, (SELECT path, COUNT(path) FROM log group by path) AS view_count 
+  WHERE view_count.path LIKE '%' || articles.slug;
 ```
 _contains the article slug, title, and author id combined with a count based on logged request paths count for each path matching a slug_
 
 authorviewcount
 ```
 CREATE VIEW authorviewcount AS
-   SELECT authors.id, authors.name, SUM(articleviewcount.count) 
-    FROM authors JOIN articleviewcount 
-      ON authors.id = articleviewcount.author 
-       GROUP BY authors.id;
-
+  SELECT authors.id, authors.name, SUM(articleviewcount.count) 
+  FROM authors JOIN articleviewcount 
+  ON authors.id = articleviewcount.author 
+  GROUP BY authors.id;
 ```
 
 dailystscodes
 ```
-CREAT VIEW dailystscodes AS
-    SELECT
+CREAT VIEW dailystatuslog AS
+    SELECT time::date AS day, COUNT(*) AS total_inqueries, COUNT(case when status != '200 OK' then 1 end) AS errors, ROUND((count(case when status != '200 OK' then 1 end) * 100.0)::numeric / count(*),2) AS error_percent from log group by time::date;
 ```
