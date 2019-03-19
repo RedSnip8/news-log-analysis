@@ -48,7 +48,7 @@ CREATE VIEW articleviewcount AS
   FROM articles, (SELECT path, COUNT(path) FROM log group by path) AS view_count 
   WHERE view_count.path LIKE '%' || articles.slug;
 ```
-_contains the article slug, title, and author id combined with a count based on logged request paths count for each path matching a slug_
+> This selects slug, title, and author from the articles table and selects the total count of view from a subquery. The subquery is a match up of the slug from the articles table and the path from the log table, matching the last part of the path to the slug of each article. this does not account for misspelled paths on the user end and only accounts for the correct names. The subquery then counts the amount of request paths to the said articles by thier listed slug.
 
 authorviewcount
 ```
@@ -58,6 +58,7 @@ CREATE VIEW authorviewcount AS
   ON authors.id = articleviewcount.author 
   GROUP BY authors.id;
 ```
+> This selects the id and name of each author from the authors table, and the sum the of count column from previously created articleviewcount. In order to avoid a total count the authors table and the artileviewcount view are inner joinned and matched by the id for each author in the authors table and the author column in the articleviewcount view. The author column in the articleviewcount view has the same values found ub the articles table which is the coorsponding ID for each author.
 
 dailystatuslog
 ```
@@ -67,3 +68,4 @@ CREATE VIEW dailystatuslog AS
     ROUND((count(case when status != '200 OK' then 1 end) * 100.0)::numeric 
     / count(*),2) AS error_percent from log group by time::date;
 ```
+>This selects the time from the log table and converts the timestamp timezone format into a date in order to group the status coeds by daily periods. The count of each row is then selected to track all requests even if they did not return a status code for some reason in lieu a count(status) as it is reasonable that a null would be considered an error for later use. Also selected is the rounded product of a count of all non "200 OK" status codes divided by the total logged rows. The return value is set to numerical format and up to 2 decimal places. The errors_percent is by 00.00% format.
