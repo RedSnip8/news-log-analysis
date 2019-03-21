@@ -13,7 +13,8 @@ def get_top_articles():
     conn = psycopg2.connect(dbname=DBNAME)
     cur = conn.cursor()
     cur.execute(
-        "select title, count from articleviewcount order by count desc limit 3;"
+        """select title, count from articleviewcount
+        order by count desc limit 3;"""
         )
     top_posts = cur.fetchall()
     conn.close()
@@ -25,7 +26,8 @@ def get_top_authors():
     conn = psycopg2.connect(dbname=DBNAME)
     cur = conn.cursor()
     cur.execute(
-        "select name, sum from authorviewcount order by sum desc limit 3;"
+        """select name, sum from authorviewcount
+        order by sum desc limit 3;""""
         )
     top_authors = cur.fetchall()
     conn.close()
@@ -37,7 +39,8 @@ def get_high_error_day():
     conn = psycopg2.connect(dbname=DBNAME)
     cur = conn.cursor()
     cur.execute(
-        "select day, error_percent from dailystatuslog where error_percent > 1 order by day;"
+        """select day, error_percent from dailystatuslog
+        where error_percent > 1 order by day;""""
         )
     error_log = cur.fetchall()
     conn.close()
@@ -60,12 +63,18 @@ report = open(cwd + "/reports/newsReport_" + timestmp + ".txt", "w+")
 # write each chunk of data with two new lines between them
 report.write("Top Articles and View Count\r\n")
 for article in toparticles:
-    report.write("Article: " + article[0] + "\n  Views: " + str(article[1]) + "\r\n")
+    report.write(
+        "Article: " + article[0] +
+        "\n  Views: " + str(article[1]) + "\r\n"
+            )
 
 report.write("\n\nTop Authors and View Count\r\n")
 
 for author in topauthors:
-    report.write("Author: " + author[0] + "\n Views: " + str(author[1]) + "\r\n")
+    report.write(
+        "Author: " + author[0] +
+        "\n Views: " + str(author[1]) + "\r\n"
+            )
 
 report.write("\n\nDays With Page Request Errors over 1%\r\n")
 for day in errors:
