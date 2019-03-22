@@ -3,18 +3,19 @@
 import psycopg2
 import time
 import os
+import sys
 
 # Declare variable for Database Name
 DBNAME = "news"
 
-#variable for database queries for:
+# Variable for database queries for:
 
 # -top artiles using established view
 artilces_query = """select title, count from articleviewcount
         order by count desc limit 3;"""
 
 # -top authors using estblished view
-authors_query =  """select name, sum from authorviewcount
+authors_query = """select name, sum from authorviewcount
         order by sum desc limit 3;"""
 
 # -days with returned data errors over 1%
@@ -30,13 +31,33 @@ report = open(cwd + "/reports/newsReport_" + timestmp + ".txt", "w+")
 
 
 def execute_query(sql_code):
-    conn = psycopg2.connect(dbname=DBNAME)
-    cur = conn.cursor()
-    cur.execute(sql_code)
-    data = cur.fetchall()
-    conn.close()
-    return data
+    try:
+        conn = psycopg2.connect(dbname=DBNAME)
+        cur = conn.cursor()
+        cur.execute(sql_code)
+    except psycopg2.OperationalError as e:
+        print("Database does not exist.\r\n")
+        print(e.pgerror)
+        print(e.diag.message_detail)
+        sys.exit(1)
+    except psycopg2.ProgrammingError as e:
+        print("View or Table does not exist.\r\n")
+        print(e.pgerror)
+        print(e.diag.message_detail)
+        sys.exit(1)
+    except psycopg2.Error as e:
+        print("Something went wrong.\r\n")
+        print(e.pgerror)
+        print(e.diag.message_detail)
+        sys.exit(1)
+    else:
+        data = cur.fetchall()
+        conn.close()
+        return data
 
+
+# Let user know its processing
+print("Processing data for report...")
 # Write data to a txt file
 
 # Variables for gets
@@ -71,3 +92,4 @@ for day in errors:
 # save the new report file
 report.seek
 report.close()
+print("All done!")
