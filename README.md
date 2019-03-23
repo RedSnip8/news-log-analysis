@@ -2,7 +2,15 @@
 
 Code written by [Frank Cipolone aka RedSnip8.](https://github.com/RedSnip8)
 
-## Overview
+###Index
+[Overview](## overview)
+[Desription of Code Function](## code-function)
+[Getting Started](## getting-started)
+[How to Use](## how-to)
+[Created Views](## views)
+
+
+## <a name="overview"></a>Overview
 This program is set up to function as a reporting tool for a PostgreSQL database. It will return data based on the following report questions:
 
   * __What are the *3 most popular* news articles (based on article views)?__
@@ -11,7 +19,7 @@ This program is set up to function as a reporting tool for a PostgreSQL database
 
 The program is python based making use of the psycop2 DB-API and is meant to be connected to a premade news databased using PostgreSQL.
 
-## Description of code function
+## <a name="code-function"></a>Description of Code Function
 
 In order to satisfy each report question the code does the following:
 
@@ -34,7 +42,21 @@ In order to satisfy each report question the code does the following:
   * return each date that has a product of 0.01 or more
 
 
-## How to use
+## <a name="getting-started"></a>Getting Started:
+
+### System Requirements
+This code is meant to run on either Ubuntu 16.04 with PostgreSQL and Python 3. If you already have these then feel free to continue on to the [How to use section](## how-to). 
+
+### Setting up a virtual system
+
+### Connecting to a virtual system
+
+### <a name="manual-set"></a>Manual setup for existing Linux system
+
+### Prep for first use
+
+
+## <a name="how-to"></a>How to Use
 Open a new terminal shell and be sure to run the application using python3 while in the /news-log-analysis directory to function properly. _If you git cloned this directory outside of the home directory fill in the cd command below with the correct path_
 
 ```
@@ -62,7 +84,7 @@ $ vim reports/newsReport_*YYYMonDD_HH.MM_ZCODE*.txt
 ```
 
 
-### Created Views for use
+### <a name="views"></a>Created Views for use
 The Python code relies heavily on the following views being created in order to save time on the applicaiton end. __Be sure to create each table in oreder shown.__
 Views were created for the following:
 
