@@ -3,11 +3,11 @@
 Code written by [Frank Cipolone aka RedSnip8.](https://github.com/RedSnip8)
 
 ###Index
-[Overview](## overview)
-[Desription of Code Function](## code-function)
-[Getting Started](## getting-started)
-[How to Use](## how-to)
-[Created Views](## views)
+[Overview](overview)
+[Desription of Code Function](code-function)
+[Getting Started](getting-started)
+[How to Use](how-to)
+[Created Views](views)
 
 
 ## <a name="overview"></a>Overview
@@ -45,7 +45,7 @@ In order to satisfy each report question the code does the following:
 ## <a name="getting-started"></a>Getting Started:
 
 ### System Requirements
-This code is meant to run on either Ubuntu 16.04 with PostgreSQL and Python 3. If you already have these then feel free to continue on to the [How to use section](## how-to). 
+This code is meant to run on either Ubuntu 16.04 with PostgreSQL and Python 3. If you already have these then feel free to continue on to the [How to use section.](how-to) 
 
 ### Setting up a virtual system
 
