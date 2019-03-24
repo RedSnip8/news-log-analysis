@@ -3,11 +3,11 @@
 Code written by [Frank Cipolone aka RedSnip8.](https://github.com/RedSnip8)
 
 ### Index
-[Overview](#overview)
-[Desription of Code Function](#code-function)
-[Getting Started](#getting-started)
-[How to Use](#how-to)
-[Created Views](#views)
+* [Overview](#overview)
+* [Desription of Code Function](#code-function)
+* [Getting Started](#getting-started)
+* [How to Use](#how-to)
+* [Created Views](#views)
 
 
 ## <a name="overview"></a>Overview
